@@ -1,17 +1,21 @@
-import React, { FC, useState } from 'react'
-import { FormProvider, useForm } from 'react-hook-form'
+import React, { FC } from 'react'
+import { useForm, FormProvider } from 'react-hook-form'
+import { Box } from '../box'
 import { FormProps } from './types'
 
-export const Form: FC<FormProps> = ({ children, submit }) => {
-  const [value, setValue] = useState(0)
-  const methods = useForm()
+export const Form: FC<FormProps> = ({
+  submit,
+  gap,
+  children,
+  ...useFormProps
+}) => {
+  const methods = useForm(useFormProps)
   const onSubmit = methods.handleSubmit(submit)
   return (
     <FormProvider {...methods}>
-      <form {...{ onSubmit }}>{children}</form>
-      <button {...{ onClick: () => setValue((prev) => prev + 1) }}>
-        {value}
-      </button>
+      <form {...{ onSubmit }}>
+        <Box {...{ gap }}>{children}</Box>
+      </form>
     </FormProvider>
   )
 }
