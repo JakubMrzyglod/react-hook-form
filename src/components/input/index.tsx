@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import { useFormContext } from 'react-hook-form'
-import { InputProps } from './types'
+import { InputWrapper } from '../wrapper'
+import { InputField } from './styled/input-field'
+import { TextInputProps } from './types'
 
-export const Input: FC<InputProps> = ({ name }) => {
-  const { register } = useFormContext()
-  return <input {...register(name)} />
-}
+export const Input: FC<TextInputProps> = (props) => (
+  <InputWrapper {...{ ...props, Component: InputField }} />
+)

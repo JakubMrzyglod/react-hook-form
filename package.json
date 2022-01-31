@@ -4,7 +4,10 @@
   "description": "Made with create-react-library",
   "author": "",
   "license": "MIT",
-  "repository": "/react-hook-form",
+  "repository": "https://github.com/JakubMrzyglod/react-hook-form",
+  "publishConfig": {
+    "@jakubmrzyglod:registry": "https://npm.pkg.github.com"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
@@ -34,6 +37,7 @@
     "@types/node": "^12.12.38",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.21",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
@@ -61,6 +65,7 @@
     "dist"
   ],
   "dependencies": {
-    "react-hook-form": "^7.25.3"
+    "react-hook-form": "^7.25.3",
+    "styled-components": "^5.3.3"
   }
 }
