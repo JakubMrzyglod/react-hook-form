@@ -4,6 +4,6 @@ type BoxContextType = {
   gap?: number;
 };
 
-export const BoxContext = createContext<BoxContextType>({
+export const boxContext = createContext<BoxContextType>({
   gap: 0,
 });

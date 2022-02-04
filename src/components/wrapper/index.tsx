@@ -22,9 +22,9 @@ export const InputWrapper: FC<InputWrapperProps> = ({
   useEffect(() => () => unregister(name), [])
 
   return (
-    <InputGroup {...{ ...sizes }}>
+    <InputGroup {...sizes}>
       <InputLabel {...{ label }} />
-      <Component {...{ label, error, ...register(name), ...componentProps }} />
+      <Component {...{ error, ...componentProps, ...register(name) }} />
       <InputError {...{ error }} />
     </InputGroup>
   )

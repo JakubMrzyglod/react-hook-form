@@ -13,9 +13,9 @@ export const Form: FC<FormProps> = ({
   const onSubmit = methods.handleSubmit(submit)
   return (
     <FormProvider {...methods}>
-      <form {...{ onSubmit }}>
-        <Box {...{ gap }}>{children}</Box>
-      </form>
+      <Box {...{ gap }}>
+        <form {...{ onSubmit }}>{children}</form>
+      </Box>
     </FormProvider>
   )
 }

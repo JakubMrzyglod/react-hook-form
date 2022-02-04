@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { BoxContext } from './context'
+import { boxContext } from './context'
 
 type Props = {
   gap?: number
@@ -15,16 +15,13 @@ export const BoxProviderWrapper: FC<BoxContextProviderType> = ({
   return <Provider {...{ value }}>{children}</Provider>
 }
 
-export const Box = styled.div.attrs<BoxContextProviderType>(
-  BoxProviderWrapper
-)<Props>`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${({ gap }) => gap ?? 0}rem;
-  /* padding: 1.5rem;
-  padding-right: ${({ gap }) => (gap ?? 0) - 1.5}rem; */ //TODO:
+export const Box = styled.div.attrs<BoxContextProviderType>((props) => ({
+  children: <BoxProviderWrapper {...props} />
+}))<Props>`
+  margin-right: -${({ gap }) => (gap ?? 0) / 2}rem;
+  margin-left: -${({ gap }) => (gap ?? 0) / 2}rem;
 `
 
-const Provider = BoxContext.Provider
+const Provider = boxContext.Provider
 
 type BoxContextProviderType = { children: Node } & Props
