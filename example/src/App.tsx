@@ -6,7 +6,9 @@ import {
   BaseInput,
   registerInputs,
   BaseCheckbox,
-  registerCheckboxes
+  registerCheckboxes,
+  registerControllers,
+  FcController
 } from '@jakubmrzyglod/react-hook-form'
 import styled from 'styled-components'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -44,6 +46,26 @@ const Checkboxes = registerCheckboxes(
   }
 )
 
+const Controller: FcController = ({ field: { value, onChange } }) => (
+  <>
+    {value}
+    <button
+      {...{
+        onClick: () => onChange(value + 1),
+        children: 'Add',
+        type: 'button'
+      }}
+    />
+  </>
+)
+
+const Controllers = registerControllers(
+  { Controller, Label, Error },
+  {
+    counter: { name: 'counter', defaultValue: 0 }
+  }
+)
+
 export const App = () => {
   const submit = (data: any) => console.info('submit', data)
   return (
@@ -51,6 +73,7 @@ export const App = () => {
       <Inputs.firstName {...{ sm: 3 }} />
       <Inputs.lastName {...{ sm: 3 }} />
       <Checkboxes.isActive {...{ sm: 3 }} />
+      <Controllers.counter {...{ sm: 3 }} />
       <button {...{ type: 'submit', children: 'submit' }} />
     </Form>
   )

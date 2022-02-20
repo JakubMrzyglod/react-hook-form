@@ -8,5 +8,7 @@ export type ControllerGroupProps = {
 } & Omit<UseControllerProps, 'control'>
 
 export type ControllerGroupComponents = Omit<InputGroupComponents, 'Input'> & {
-  Controller: FC<UseControllerReturn>
+  Controller: FcController
 }
+
+export type FcController = FC<UseControllerReturn>
