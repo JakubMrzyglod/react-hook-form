@@ -4,17 +4,23 @@ import {
   BaseLabel,
   BaseError,
   BaseInput,
-  registerInputs
+  registerInputs,
+  BaseCheckbox,
+  registerCheckboxes
 } from '@jakubmrzyglod/react-hook-form'
 import styled from 'styled-components'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { object, string } from 'yup'
 
-const Input = styled(BaseInput)``
+const Input = styled(BaseInput)`
+  color: ${({ error }) => (error ? 'red' : 'green')};
+`
 
 const Label = styled(BaseLabel)``
 
 const Error = styled(BaseError)``
+
+const Checkbox = styled(BaseCheckbox)``
 
 const schema = object().shape({
   firstName: string().required(),
@@ -31,14 +37,21 @@ const Inputs = registerInputs(
   }
 )
 
+const Checkboxes = registerCheckboxes(
+  { Checkbox, Label, Error },
+  {
+    isActive: { name: 'isActive', label: 'First Name' }
+  }
+)
+
 export const App = () => {
-  const submit = (data: any) => console.log(data)
+  const submit = (data: any) => console.info('submit', data)
   return (
     <Form {...{ submit, resolver, gap: 1 }}>
       <Inputs.firstName {...{ sm: 3 }} />
       <Inputs.lastName {...{ sm: 3 }} />
-      <Inputs.firstName {...{ sm: 3 }} />
-      <Inputs.lastName {...{ sm: 3 }} />
+      <Checkboxes.isActive {...{ sm: 3 }} />
+      <button {...{ type: 'submit', children: 'submit' }} />
     </Form>
   )
 }
