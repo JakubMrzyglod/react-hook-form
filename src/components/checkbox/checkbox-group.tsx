@@ -14,7 +14,6 @@ export const CheckboxGroup: (
       formState: { errors }
     } = useFormContext()
     const error = errors[name]?.message
-    console.log(errors);
     return (
       <BoxItem {...sizes}>
         <Label {...{ error }}>
