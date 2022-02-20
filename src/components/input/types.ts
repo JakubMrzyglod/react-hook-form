@@ -19,12 +19,12 @@ export type InputGroupProps = HtmlInputProps & {
 }
 
 export type InputGroupComponents = {
-  Input: InputGroupComponent<'input', InputProps>
-  Label?: InputGroupComponent<'label', LabelProps>
-  Error?: InputGroupComponent<'p', ErrorProps>
+  Input: GroupComponent<'input', InputProps>
+  Label?: GroupComponent<'label', LabelProps>
+  Error?: GroupComponent<'p', ErrorProps>
 }
 
-export type InputGroupComponent<
+export type GroupComponent<
   ComponentName extends keyof JSX.IntrinsicElements | React.ComponentType<any>,
   ComponentProps extends object
 > = StyledComponent<ComponentName, any, ComponentProps, never>
