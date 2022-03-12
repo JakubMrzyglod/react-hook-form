@@ -16,7 +16,12 @@ export type InputGroupProps = HtmlInputProps & {
   name: string
   sizes: Sizes
   label?: string
+  arrayProps?: ArrayProps
 }
+
+export type ArrayProps = { baseName: string; index: number }
+
+export type RegisteredComponentProps = Sizes & { arrayProps?: ArrayProps }
 
 export type InputGroupComponents = {
   Input: GroupComponent<'input', InputProps>

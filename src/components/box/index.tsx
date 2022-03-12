@@ -17,10 +17,7 @@ export const BoxProviderWrapper: FC<BoxContextProviderType> = ({
 
 export const Box = styled.div.attrs<BoxContextProviderType>((props) => ({
   children: <BoxProviderWrapper {...props} />
-}))<Props>`
-  margin-right: -${({ gap }) => (gap ?? 0) / 2}rem;
-  margin-left: -${({ gap }) => (gap ?? 0) / 2}rem;
-`
+}))<Props>``
 
 const Provider = boxContext.Provider
 

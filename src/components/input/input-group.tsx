@@ -8,12 +8,17 @@ export const InputGroup: (
   inputGroupComponent: InputGroupComponents
 ) => FC<InputGroupProps> =
   ({ Input, Label, Error }: InputGroupComponents) =>
-  ({ name, sizes, label, ...inputProps }) => {
+  ({ name, sizes, label, arrayProps, ...inputProps }) => {
     const {
       register,
       formState: { errors }
     } = useFormContext()
+    if (arrayProps) {
+      const { baseName, index } = arrayProps
+      name = [baseName, index, name].join('.')
+    }
     const error = errors[name]?.message
+    console.log(name)
     return (
       <BoxItem {...sizes}>
         {Label && <Label {...{ error, children: label }} />}

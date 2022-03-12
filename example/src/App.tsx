@@ -69,11 +69,16 @@ const Controllers = registerControllers(
 export const App = () => {
   const submit = (data: any) => console.info('submit', data)
   return (
-    <Form {...{ submit, resolver, gap: 1 }}>
-      <Inputs.firstName {...{ sm: 3 }} />
-      <Inputs.lastName {...{ sm: 3 }} />
+    <Form {...{ submit, /*resolver,*/ gap: 1 }}>
+      <Inputs.firstName
+        {...{ sm: 3, arrayProps: { baseName: 'test', index: 0 } }}
+      />
+      <Inputs.firstName
+        {...{ sm: 3, arrayProps: { baseName: 'test', index: 2 } }}
+      />
+      {/* <Inputs.lastName {...{ sm: 3 }} />
       <Checkboxes.isActive {...{ sm: 3 }} />
-      <Controllers.counter {...{ sm: 3 }} />
+      <Controllers.counter {...{ sm: 3 }} /> */}
       <button {...{ type: 'submit', children: 'submit' }} />
     </Form>
   )

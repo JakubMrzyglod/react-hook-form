@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { InputGroupProps, Sizes } from '../wrapper/types'
+import { InputGroupProps } from '../wrapper/types'
 import { InputGroup } from './input-group'
-import { InputGroupComponents } from './types'
+import { InputGroupComponents, RegisteredComponentProps } from './types'
 
 export const registerInputs = <
   T extends Record<string, Omit<InputGroupProps, 'sizes'>>
@@ -14,9 +14,11 @@ export const registerInputs = <
   const inputs = fieldKeys.reduce(
     (resultInputs, key) => ({
       ...resultInputs,
-      [key]: (sizes) => <Component {...{ sizes, ...fields[key] }} />
+      [key]: ({ arrayProps, ...sizes }) => (
+        <Component {...{ arrayProps, sizes, ...fields[key] }} />
+      )
     }),
-    {} as Record<keyof T, FC<Sizes>>
+    {} as Record<keyof T, FC<RegisteredComponentProps>>
   )
   return inputs
 }
